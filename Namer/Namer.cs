@@ -4,15 +4,14 @@ Vasya Ryzhkoff, 2023
 */
 
 
-
-using Newtonsoft.Json;
+using System.Text.Json;
 using Ieroglyphs;
 public static class Namer
 {
 
     private static string _jsonFile = "Namer/ieroglyph_list.json";
     private static string _jsonText = File.ReadAllText(_jsonFile);
-    private static List<Ieroglyph>? _ieroglyphs = JsonConvert.DeserializeObject<List<Ieroglyph>>(_jsonText);
+    private static List<Ieroglyph>? _ieroglyphs = JsonSerializer.Deserialize<List<Ieroglyph>>(_jsonText);
 
     private static bool NextIsVowel(string name, int index)
     {
